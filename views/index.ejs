@@ -1,0 +1,132 @@
+<html>
+    <head>
+        <style>
+            *{
+                box-sizing: border-box;
+            }
+
+            .grid-container{
+                background-color: rgb(88, 88, 88);
+                display: grid;
+                grid-template-columns: repeat(4,250px);
+                grid-template-rows: repeat(5,150px);
+                margin: 2%;
+                grid-gap: 1px;
+                border: 1px solid rgb(88, 88, 88);
+            }
+
+
+            .item-1{
+                grid-column-start:  1;
+                grid-column-end: 2;
+                grid-row-start: 1;
+                grid-row-end: 3;
+                background-color: bfbfbf;
+            }
+
+            .item-2{
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                grid-column-start:  1;
+                grid-column-end: 2;
+                grid-row-start: 3;
+                grid-row-end: 4;
+                background-color: afabab;
+            }
+
+            .item-3{
+                grid-column-start:  1;
+                grid-column-end: 2;
+                grid-row-start: 4;
+                grid-row-end: 6;
+                background-color: bfbfbf;
+            }
+
+            .item-4{
+                grid-column-start:  2;
+                grid-column-end: 6;
+                grid-row-start: 1;
+                grid-row-end: 6;
+                background-color: e7e6e6;
+            }
+
+            .quantity{
+                position: absolute;
+                font-size: 12px;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                top: 15%;
+            }
+
+            .input{
+                position: absolute;
+                top: 50%;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+            .list-object{
+                height: 15%;
+                width: 80%;
+                position: relative;
+                left: 10%;
+                margin-top: 40px;
+                border: 1px solid black;
+                background-color: afabab;
+            }
+            .numberCircle {
+                border-radius: 50%;
+                width: 80px;
+                height: 80px;
+                padding: 8px;
+                margin-top: 15px;
+                margin-left: 10px;
+                background: rgb(204, 204, 204) ;
+                color: rgb(0, 0, 0);
+                font-size: 30px;
+                text-align: center;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+        </style>
+    </head>
+
+    <script>
+        function getNum() {
+            console.log(num)
+            var num = document.getElementById("inputnum").value;
+            if (num == 0){
+                document.getElementById("object-list").innerHTML = "";
+            } else {
+                for (let i = 0; i < num; i++) {
+                    var newListObject = document.createElement("div");
+                    const listLocation = document.getElementById("object-list");
+                    newListObject.classList.add("list-object");
+                    var newNumber = document.createElement("div");
+                    newNumber.innerHTML = i+1;
+                    newNumber.classList.add("numberCircle");
+                    listLocation.appendChild(newListObject);
+                    newListObject.appendChild(newNumber);
+                    
+                }
+            }
+        }
+
+    </script>
+
+    <body>
+        <div class="grid-container">
+            <div class="grid-item item-1">
+            </div>
+            <div class="grid-item item-2">
+                <div class="quantity">
+                    <h1>Quantity</h1>
+                </div>
+                <div class="input">
+                    <input id="inputnum" type="text" placeholder="Type here" oninput="getNum()">
+                </div>
+            </div>
+            <div class="grid-item item-3"></div>
+            <div class="grid-item item-4" id="object-list"></div>
+            </div>
+        </div>
+    </body>
+</html>
